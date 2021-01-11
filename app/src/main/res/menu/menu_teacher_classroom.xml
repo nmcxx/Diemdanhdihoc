@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/teacher_classroom_dssv"
+        android:title="Danh sách sinh viên"/>
+
+    <item
+        android:id="@+id/teacher_classroom_addsv"
+        android:title="Thêm sinh viên"/>
+
+    <item
+        android:id="@+id/teacher_classroom_addsvexcel"
+        android:title="Thêm sinh viên bằng excel"/>
+
+    <item
+        android:id="@+id/teacher_classroom_exportexcel"
+        android:title="Xuất file excel"/>
+
+<!--    <item-->
+<!--        android:id="@+id/a"-->
+<!--        android:title="Thống kê"-->
+<!--        />-->
+</menu>

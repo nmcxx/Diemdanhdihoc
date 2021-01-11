@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Diem danh di hoc</string>
+    <string name="button">Button</string>
+    <string name="name">Name</string>
+    <string name="todo">TODO</string>
+    <string name="hello">Hello</string>
+    <string name="scan">scan</string>
+    <string name="lophocvien">Lớp Học Viên</string>
+    <string name="lopquanly">Lớp Quản Lý</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

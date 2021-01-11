@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_add_sv_Msv"
+        android:layout_centerHorizontal="true"
+        android:hint="Mã sinh viên"
+        />
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_add_sv_Hoten"
+        android:layout_centerHorizontal="true"
+        android:hint="Ho ten"
+        android:layout_below="@+id/dialog_add_sv_Msv"
+        />
+    <Button
+        android:id="@+id/dialog_add_sv_btnAdd"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Thêm"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dialog_add_sv_Hoten"
+        android:layout_marginRight="25dp"
+        />
+    <Button
+        android:id="@+id/dialog_add_sv_btnCancel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Hủy"
+        android:layout_below="@+id/dialog_add_sv_Hoten"
+        android:layout_toLeftOf="@id/dialog_add_sv_btnAdd"
+        android:layout_marginLeft="10dp"/>
+
+
+</RelativeLayout>
