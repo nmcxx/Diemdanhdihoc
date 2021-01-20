@@ -32,21 +32,25 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
-        <activity android:name=".StudentClassroom">
+        <activity android:name=".StudentClassroom"
+            android:screenOrientation="portrait">
+
 <!--                        <intent-filter>-->
 <!--                            <action android:name="android.intent.action.MAIN" />-->
 
 <!--                            <category android:name="android.intent.category.LAUNCHER" />-->
 <!--                        </intent-filter>-->
         </activity>
-        <activity android:name=".StudentMain">
+        <activity android:name=".StudentMain"
+            android:screenOrientation="portrait">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".TeacherClassroomActivity" >
+        <activity android:name=".TeacherClassroomActivity"
+            android:screenOrientation="portrait">
 <!--             <intent-filter>-->
 <!--             <action android:name="android.intent.action.MAIN" />-->
 
@@ -54,7 +58,8 @@
 <!--             <category android:name="android.intent.category.LAUNCHER" />-->
 <!--             </intent-filter>-->
         </activity>
-        <activity android:name=".TeacherMainAct">
+        <activity android:name=".TeacherMainAct"
+            android:screenOrientation="portrait">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -72,7 +77,8 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ExportAct">
+        <activity android:name=".ExportAct"
+            android:screenOrientation="portrait">
 
 <!--             <intent-filter>-->
 <!--             <action android:name="android.intent.action.MAIN" />-->
@@ -81,7 +87,8 @@
 <!--             <category android:name="android.intent.category.LAUNCHER" />-->
 <!--             </intent-filter>-->
         </activity>
-        <activity android:name=".LoginAct">
+        <activity android:name=".LoginAct"
+            android:screenOrientation="portrait">
 
              <intent-filter>
              <action android:name="android.intent.action.MAIN" />
@@ -90,13 +97,15 @@
              <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ScanCapture"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".ThongKeActivity">
+        <activity android:name=".ThongKeActivity"
+            android:screenOrientation="portrait">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 

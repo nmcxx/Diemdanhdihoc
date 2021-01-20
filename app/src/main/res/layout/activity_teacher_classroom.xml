@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -84,28 +84,6 @@
                         android:paddingTop="10dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ngày"
-                        android:textSize="25sp"
-                        android:textColor="#141212"/>
-                    <TextView
-                        android:id="@+id/txtNgay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="99/99/9999"
-                        android:textSize="21sp"
-                        android:textColor="#141212"
-                        android:paddingTop="10dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -124,28 +102,20 @@
             android:layout_height="wrap_content"
             app:queryHint="Mã sinh viên"
             android:layout_marginLeft="10dp"></androidx.appcompat.widget.SearchView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điểm danh thủ công"
-            android:textColor="#141212"
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="35dp"/>
 
-         <Switch
-             android:id="@+id/swDiemDanhThuCong"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="13dp"
-             android:layout_marginLeft="5dp"/>
-
+            <Button
+                android:id="@+id/btnDDTC"
+                android:text="Lưu thông tin điểm danh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
         </LinearLayout>
 
-            <ListView
-                android:id="@+id/lvDanhSachDiemDanh"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="50dp" />
+        <ListView
+            android:id="@+id/lvDanhSachDiemDanh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp" />
 
     </RelativeLayout>
 

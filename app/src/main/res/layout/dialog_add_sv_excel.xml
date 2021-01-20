@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Vui lòng tạo file .csv theo mẫu sau"
+        android:text="Vui lòng tạo file .xls theo mẫu sau"
         android:gravity="center_horizontal" />
 
 
