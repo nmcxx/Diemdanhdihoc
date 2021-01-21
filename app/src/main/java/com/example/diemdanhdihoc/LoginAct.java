@@ -33,7 +33,7 @@ public class LoginAct extends AppCompatActivity {
 
     public static String checkUser, checkPass;
 
-    private String URLINSERT = "https://vdili.000webhostapp.com/index.php";
+    private String URL_CHECKLOGIN = "https://vdili.000webhostapp.com/checklogin.php";
     private Button btnLogin;
     private EditText edtUsername, edtPassword;
 
@@ -71,13 +71,12 @@ public class LoginAct extends AppCompatActivity {
                 String checkPassWord = edtPassword.getText().toString().trim();
                 if(checkUserName.isEmpty() || checkPassWord.isEmpty())
                 {
-                    Toast.makeText(LoginAct.this, "Chua nhap du thong tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginAct.this, "Chưa nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     loadingDialog.startLoadingDialog();
-                    LoginUser(URLINSERT);
-                    Log.d("c","trao nu cuoi");
+                    LoginUser(URL_CHECKLOGIN);
                 }
             }
         });
@@ -100,15 +99,13 @@ public class LoginAct extends AppCompatActivity {
     private void LoginUser(String url)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Log.d("b","am tham ben em");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,  new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("b","anh ngan ngo cu ngo");
                         if(response.trim().equals("gv"))
                         {
                             loadingDialog.dismissDialog();
-                            Toast.makeText(LoginAct.this, "Thanh cong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginAct.this, "GV Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             Log.d("b","adaga");
                             checkUser = edtUsername.getText().toString().trim();
                             checkPass = edtPassword.getText().toString().trim();
@@ -119,7 +116,7 @@ public class LoginAct extends AppCompatActivity {
                         else if(response.trim().equals("hs"))
                         {
                             loadingDialog.dismissDialog();
-                            Toast.makeText(LoginAct.this, "Thanh cong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginAct.this, "HS Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             Log.d("b","ahocsinh");
                             checkUser = edtUsername.getText().toString().trim();
                             checkPass = edtPassword.getText().toString().trim();
@@ -130,7 +127,7 @@ public class LoginAct extends AppCompatActivity {
                         else
                         {
                             loadingDialog.dismissDialog();
-                            Toast.makeText(LoginAct.this, "That bai", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginAct.this, "Tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();
                             Log.d("b","ahuhjh");
                         }
                     }

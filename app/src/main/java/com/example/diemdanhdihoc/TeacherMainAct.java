@@ -48,11 +48,11 @@ import java.util.Map;
 
 public class TeacherMainAct extends AppCompatActivity {
 
-    private String urlhienthilop = "https://vdili.000webhostapp.com/user.php";
-    private String urlxoalop = "https://vdili.000webhostapp.com/xoalop.php";
-    private String urlthongtin = "https://vdili.000webhostapp.com/thongtin.php";
-    private String urldoimatkhau = "https://vdili.000webhostapp.com/doimatkhau.php";
-    private String urltaolop = "https://vdili.000webhostapp.com/taolop.php";
+    private String URL_HIENTHILOP = "https://vdili.000webhostapp.com/danhsachlop.php"; // user
+    private String URL_XOALOP = "https://vdili.000webhostapp.com/xoalop.php";
+    private String URL_THONGTIN = "https://vdili.000webhostapp.com/thongtin.php";
+    private String URL_DOIMATKHAU = "https://vdili.000webhostapp.com/doimatkhau.php";
+    private String URL_TAOLOP = "https://vdili.000webhostapp.com/taolop.php";
 
     private final LoadingDialog loadingDialog = new LoadingDialog(TeacherMainAct.this);
 
@@ -85,7 +85,7 @@ public class TeacherMainAct extends AppCompatActivity {
         lvLopHoc = (ListView) findViewById(R.id.lvDanhSachLop);
 
         lopHocArrayList = new ArrayList<>();
-        GetData(urlhienthilop, LoginAct.checkUser, 0);
+        GetData(URL_HIENTHILOP, LoginAct.checkUser, 0);
 
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lopHocArrayList);
         lvLopHoc.setAdapter(arrayAdapter);
@@ -117,8 +117,8 @@ public class TeacherMainAct extends AppCompatActivity {
             }
         });
 
-//        GetData(urlhienthilop, LoginAct.checkUser);
-        GuiYeuCau(urlthongtin,LoginAct.checkUser);
+//        GetData(URL_HIENTHILOP, LoginAct.checkUser);
+        GuiYeuCau(URL_THONGTIN,LoginAct.checkUser);
         
 
     }
@@ -140,7 +140,7 @@ public class TeacherMainAct extends AppCompatActivity {
                                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        XoaLop(urlxoalop,lopHocArrayList.get(vitri).getId());
+                                        XoaLop(URL_XOALOP,lopHocArrayList.get(vitri).getId());
 //                                        Toast.makeText(TeacherMainAct.this,"Xóa lớp học thành công",Toast.LENGTH_SHORT).show();
                                         loadingDialog.startLoadingDialog();
                                     }
@@ -176,7 +176,7 @@ public class TeacherMainAct extends AppCompatActivity {
 //                        GetData(url);
                         loadingDialog.dismissDialog();
                         Toast.makeText(TeacherMainAct.this,"Xóa lớp thành công", Toast.LENGTH_SHORT).show();
-                        GetData(urlhienthilop,LoginAct.checkUser,0);
+                        GetData(URL_HIENTHILOP,LoginAct.checkUser,0);
                     }
                     else
                     {
@@ -369,7 +369,7 @@ public class TeacherMainAct extends AppCompatActivity {
                 {
                     Toast.makeText(TeacherMainAct.this,"Tạo lớp thành công", Toast.LENGTH_SHORT).show();
                     loadingDialog.dismissDialog();
-                    GetData(urlhienthilop,LoginAct.checkUser,0);
+                    GetData(URL_HIENTHILOP,LoginAct.checkUser,0);
                 }
                 else
                 {
@@ -478,7 +478,7 @@ public class TeacherMainAct extends AppCompatActivity {
                 else
                 {
 //                    Toast.makeText(TeacherMainAct.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                    ChangePass(urldoimatkhau, LoginAct.checkUser, newPass);
+                    ChangePass(URL_DOIMATKHAU, LoginAct.checkUser, newPass);
                     dialog.dismiss();
                     loadingDialog.startLoadingDialog();
                 }
@@ -519,7 +519,7 @@ public class TeacherMainAct extends AppCompatActivity {
                 }
                 else
                 {
-                    CreateClassRoom(urltaolop,LoginAct.checkUser,tenLop);
+                    CreateClassRoom(URL_TAOLOP,LoginAct.checkUser,tenLop);
                     loadingDialog.startLoadingDialog();
                     dialog.dismiss();
 //                    Toast.makeText(TeacherMainAct.this,"Tạo lớp thành công",Toast.LENGTH_SHORT).show();
@@ -563,7 +563,7 @@ public class TeacherMainAct extends AppCompatActivity {
                 break;
             case R.id.item4:
                 //Toast.makeText(this,"Đăng xuất",Toast.LENGTH_SHORT).show();
-                Log.d("loi","Click Item 4");
+//                Log.d("loi","Click Item 4");
                 LoginAct.checkUser = "";
                 LoginAct.checkPass = "";
                 Intent intent = new Intent(TeacherMainAct.this, LoginAct.class);

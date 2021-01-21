@@ -15,11 +15,11 @@ public class home extends AppCompatActivity {
     private TabLayout tabLayout;
     private TabItem tabGV, tabHV;
     private ViewPager viewPager;
-    private PagerAdapter pagerAdapter;
+//    private PagerAdapter pagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+//        setContentView(R.layout.activity_home);
 
         if(LoginAct.checkUser=="" || LoginAct.checkUser==null)
         {
@@ -27,14 +27,14 @@ public class home extends AppCompatActivity {
             startActivity(intent);
         }
 
-        tabLayout = (TabLayout)findViewById(R.id.tabBar);
-        tabGV = (TabItem)findViewById(R.id.tabLopQuanLy);
-        tabHV = (TabItem)findViewById(R.id.tabLopHocVien);
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
-        pagerAdapter = new PagerAdapter(getSupportFragmentManager(),2);
-
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout = (TabLayout)findViewById(R.id.tabBar);
+//        tabGV = (TabItem)findViewById(R.id.tabLopQuanLy);
+//        tabHV = (TabItem)findViewById(R.id.tabLopHocVien);
+//        viewPager = (ViewPager)findViewById(R.id.viewPager);
+//        pagerAdapter = new PagerAdapter(getSupportFragmentManager(),2);
+//
+//        viewPager.setAdapter(pagerAdapter);
+//        tabLayout.setupWithViewPager(viewPager);
 
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override

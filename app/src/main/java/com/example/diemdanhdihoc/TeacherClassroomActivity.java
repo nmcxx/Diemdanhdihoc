@@ -86,14 +86,13 @@ public class TeacherClassroomActivity extends AppCompatActivity {
     private ListView lvDanhSachDiemDanh;
     private TextView txtTenLop;
     public TextView txtSoBuoi, txtSoLuong;
-    private Switch swDiemDanhThuCong;
     private SearchView searchViewDSDD;
     private Button btnDDTC;
 
     private final LoadingDialog loadingDialog = new LoadingDialog(TeacherClassroomActivity.this);
     private final String URL_GET_DSSV = "https://vdili.000webhostapp.com/svlh.php";
     private final String URL_ADD_SV = "https://vdili.000webhostapp.com/themsv.php";
-    private final String URL_GET_DIEMDANH="https://vdili.000webhostapp.com/diemdanh.php";
+    private final String URL_GET_DIEMDANH="https://vdili.000webhostapp.com/thongtindiemdanh.php"; // diemdanh
     private final String URL_XOA_SV="https://vdili.000webhostapp.com/xoasinhvien.php";
     private final String URL_DDTC="https://vdili.000webhostapp.com/diemdanhthucong.php";
     private final String URL_UPDATE_BH="https://vdili.000webhostapp.com/updatebuoihoc.php";
@@ -190,7 +189,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
 //        Toast.makeText(TeacherClassroomActivity.this, "Hello World", Toast.LENGTH_SHORT).show();
         GetSVLH(URL_GET_DSSV, idLopHoc);
-        getDiemDanh(LoginAct.checkUser, idLopHoc, 0);
+        GetDiemDanh(LoginAct.checkUser, idLopHoc, 0);
         loadingDialog.startLoadingDialog();
     }
 
@@ -246,7 +245,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
 
 
-    private void themSinhVien(final String username, final String hoTen, final int idLop)
+    private void ThemSinhVien(final String username, final String hoTen, final int idLop)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD_SV, new Response.Listener<String>() {
@@ -361,7 +360,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
         loadingDialog.dismissDialog();
-        getDiemDanh(LoginAct.checkUser, idLopHoc, 0);
+        GetDiemDanh(LoginAct.checkUser, idLopHoc, 0);
         UpdateBuoiHoc();
     }
 
@@ -422,7 +421,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    private void getDiemDanh(final String username, final int idlophoc, final int usertype){
+    private void GetDiemDanh(final String username, final int idlophoc, final int usertype){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_DIEMDANH, new Response.Listener<String>() {
             @Override
@@ -491,11 +490,6 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 //            int a = 1;
             workbook = Workbook.createWorkbook(file, workbookSettings);
             WritableSheet sheet = workbook.createSheet("First Sheet", 0);
-//            Label label = new Label(0, 2, "SECOND");
-//            Label label1 = new Label(0,1,"first");
-//            Label label0 = new Label(0,0,"HEADING");
-//            Label label3 = new Label(1,0,"Heading2");
-//            Label label4 = new Label(1,1,String.valueOf(a));
             try {
                 sheet.addCell(new Label(0,0,"Mã sinh viên"));
                 sheet.addCell(new Label(1,0,"Họ tên"));
@@ -537,12 +531,6 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                     }
 //                        sheet.addCell(new Label());
                 }
-//                sheet.addCell(new Label(2,0,));
-//                sheet.addCell(label);
-//                sheet.addCell(label1);
-//                sheet.addCell(label0);
-//                sheet.addCell(label4);
-//                sheet.addCell(label3);
             } catch (RowsExceededException e) {
                 // th
                 e.printStackTrace();
@@ -594,7 +582,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    themSinhVien(maSV,hoTen, idLopHoc);
+                    ThemSinhVien(maSV,hoTen, idLopHoc);
 //                    Toast.makeText(TeacherClassroomActivity.this, "MA sinh vien "+maSV+" da duoc them vao lop", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -677,7 +665,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(this, "Bạn cần chọn file có định dạng .csv", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Bạn cần chọn file có định dạng .xls", Toast.LENGTH_SHORT).show();
                     }
 
 //                    try {

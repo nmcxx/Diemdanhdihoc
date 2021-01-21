@@ -33,12 +33,12 @@ import java.util.Map;
 
 public class StudentClassroom extends AppCompatActivity {
 
-    private final String URL_GET_DIEMDANH="https://vdili.000webhostapp.com/diemdanh.php";
+    private final String URL_GET_TT_DIEMDANH="https://vdili.000webhostapp.com/thongtindiemdanh.php"; // diemdanh
     private final String URL_DIEMDANH ="https://vdili.000webhostapp.com/svdd.php";
 
     private ListView lvDanhSachDiemDanh;
     private Button btnDiemDanh;
-    private TextView txtSoBuoi, txtNgay, txtTenLop;
+    private TextView txtSoBuoi, txtTenLop;
 
     private final LoadingDialog loadingDialog = new LoadingDialog(this);
 
@@ -62,7 +62,6 @@ public class StudentClassroom extends AppCompatActivity {
         lvDanhSachDiemDanh = (ListView) findViewById(R.id.lvThongKeDD);
         btnDiemDanh = (Button) findViewById(R.id.btnDiemDanh);
         txtSoBuoi = (TextView) findViewById(R.id.txtSoBuoi_student);
-        txtNgay = (TextView) findViewById(R.id.txtNgay_Student);
         txtTenLop = (TextView) findViewById(R.id.classroom_student_tenlophoc);
 
         // get du lieu tu act
@@ -91,7 +90,7 @@ public class StudentClassroom extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, diemDanhArrayList);
         lvDanhSachDiemDanh.setAdapter(arrayAdapter);
 
-        getDiemDanh(LoginAct.checkUser, idLopHoc, 1);
+        GetDiemDanh(LoginAct.checkUser, idLopHoc, 1);
     }
 
     private void scanCode(){
@@ -112,12 +111,12 @@ public class StudentClassroom extends AppCompatActivity {
             {
                 keyDiemDanh = result.getContents();
                 loadingDialog.startLoadingDialog();
-                diemDanh(idLopHoc,LoginAct.checkUser,soBuoi,keyDiemDanh);
+                DiemDanh(idLopHoc,LoginAct.checkUser,soBuoi,keyDiemDanh);
 //                edtKey.setText(result.getContents());
             }
             else
             {
-                Toast.makeText(this,"Khong co ket qua", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Không có kết quả", Toast.LENGTH_LONG).show();
             }
         }
         else
@@ -126,14 +125,14 @@ public class StudentClassroom extends AppCompatActivity {
         }
     }
 
-    private void diemDanh(final int idLop,final String username, final int soBuoiHoc, final String maDiemDanh) {
+    private void DiemDanh(final int idLop,final String username, final int soBuoiHoc, final String maDiemDanh) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DIEMDANH, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response.trim().equals("true"))
                 {
-                    getDiemDanh(LoginAct.checkUser, idLopHoc, 1);
+                    GetDiemDanh(LoginAct.checkUser, idLopHoc, 1);
                     Toast.makeText(StudentClassroom.this, "Bạn đã điểm danh thành công", Toast.LENGTH_SHORT).show();
                 }
                 else if(response.trim().equals("false"))
@@ -173,9 +172,9 @@ public class StudentClassroom extends AppCompatActivity {
     }
 
 
-    private void getDiemDanh(final String username, final int idlophoc, final int usertype){
+    private void GetDiemDanh(final String username, final int idlophoc, final int usertype){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_DIEMDANH, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_TT_DIEMDANH, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 diemDanhArrayList.clear();

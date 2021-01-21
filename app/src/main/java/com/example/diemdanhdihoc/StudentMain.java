@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class StudentMain extends AppCompatActivity {
 
-    private final String URL_GET_LOP="https://vdili.000webhostapp.com/user.php";
+    private final String URL_GET_LOP="https://vdili.000webhostapp.com/danhsachlop.php"; // user
     private final String URL_GET_THONGTIN="https://vdili.000webhostapp.com/thongtin.php";
     private final String URL_DOIMATKHAU = "https://vdili.000webhostapp.com/doimatkhau.php";
 
@@ -86,11 +86,11 @@ public class StudentMain extends AppCompatActivity {
             }
         });
 
-        getDanhSachLop(LoginAct.checkUser,1);
-        getThongTin(LoginAct.checkUser);
+        GetDanhSachLop(LoginAct.checkUser,1);
+        GetThongTin(LoginAct.checkUser);
     }
 
-    public void getDanhSachLop(final String username, final int usertype){
+    private void GetDanhSachLop(final String username, final int usertype){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_LOP, new Response.Listener<String>() {
             @Override
@@ -142,7 +142,7 @@ public class StudentMain extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void getThongTin(final String username){
+    private void GetThongTin(final String username){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_THONGTIN, new Response.Listener<String>() {
             @Override
@@ -187,7 +187,7 @@ public class StudentMain extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void changePass(final String username, final String password){
+    private void ChangePass(final String username, final String password){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DOIMATKHAU, new Response.Listener<String>() {
             @Override
@@ -222,7 +222,7 @@ public class StudentMain extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void dialogThongTin(){
+    private void DialogThongTin(){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_thongtin);
@@ -249,7 +249,7 @@ public class StudentMain extends AppCompatActivity {
         dialog.show();
     }
 
-    public void dialogDoiMatKhau(){
+    private void DialogDoiMatKhau(){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_doimatkhau);
@@ -290,7 +290,7 @@ public class StudentMain extends AppCompatActivity {
                 else
                 {
 //                    Toast.makeText(TeacherMainAct.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                    changePass(LoginAct.checkUser, newPass);
+                    ChangePass(LoginAct.checkUser, newPass);
                     dialog.dismiss();
                     loadingDialog.startLoadingDialog();
                 }
@@ -319,10 +319,10 @@ public class StudentMain extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item2:
-                dialogThongTin();
+                DialogThongTin();
                 break;
             case R.id.item3:
-                dialogDoiMatKhau();
+                DialogDoiMatKhau();
                 break;
             case R.id.item4:
                 LoginAct.checkUser = "";
