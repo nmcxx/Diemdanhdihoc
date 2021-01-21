@@ -54,6 +54,8 @@ public class User {
         return "User{" +
                 "userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
+                ", hoTen='" + hoTen + '\'' +
+                ", userType='" + userType + '\'' +
                 '}';
     }
 }

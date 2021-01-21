@@ -126,6 +126,8 @@ public class TeacherMainAct extends AppCompatActivity {
     private void ShowMenu(View view, final int vitri) {
         PopupMenu popupMenu = new PopupMenu(TeacherMainAct.this, view);
         popupMenu.getMenuInflater().inflate(R.menu.menu_xoalop, popupMenu.getMenu());
+//        popupMenu.getMenu().findItem(0).setTitle("clgt");
+//        popupMenu.getMenu().getItem(0).setTitle("test");
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -333,7 +335,7 @@ public class TeacherMainAct extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public String GenerateKey(){
+    private String GenerateKey(){
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
                 + "abcdefghijklmnopqrstuvxyz";
