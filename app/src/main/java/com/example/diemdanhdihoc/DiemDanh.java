@@ -47,7 +47,7 @@ public class DiemDanh {
 
     @Override
     public String toString() {
-        String loaiDD = (diemDanh==0) ? "Vang" : "Co mat";
-        return "Buoi thu "+soBuoi+": "+loaiDD;
+        String loaiDD = (diemDanh==0) ? "Vắng" : "Có mặt";
+        return "Buổi thứ "+soBuoi+": "+loaiDD;
     }
 }

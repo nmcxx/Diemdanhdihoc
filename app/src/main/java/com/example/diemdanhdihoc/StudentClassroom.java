@@ -74,7 +74,7 @@ public class StudentClassroom extends AppCompatActivity {
 
         //
         txtSoBuoi.setText(""+soBuoi);
-        txtTenLop.setText(tenLop+"-"+maLop+"-"+tenGV);
+        txtTenLop.setText(tenLop+"-"+tenGV);
 
 
 //        Toast.makeText(this, ""+idLopHoc, Toast.LENGTH_SHORT).show();

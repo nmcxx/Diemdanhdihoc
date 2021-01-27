@@ -180,8 +180,6 @@ public class SinhVienAdapter extends BaseAdapter implements Filterable {
                 {
                     Toast.makeText(context, ""+sinhVien.getMaSinhVien()+", "+!holder.toggleButtonCheck.isChecked(), Toast.LENGTH_SHORT).show();
                     sinhVien.setCheck(false);
-//                    sinhVienList.remove(sinhVien);
-//                    notifyDataSetChanged();
                     holder.toggleButtonCheck.setChecked(false);
                 }
             }
@@ -197,8 +195,10 @@ public class SinhVienAdapter extends BaseAdapter implements Filterable {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 sinhVienList.remove(sinhVien);
-                                int soLuongNew = Integer.parseInt(context.txtSoLuong.getText().toString())-1;
-                                context.txtSoLuong.setText(""+soLuongNew);
+                                context.soLuong-=1;
+//                                int soLuongNew = Integer.parseInt(context.txtSoLuong.getText().toString())-1;
+//                                int soLuongNew = Integer.parseInt(context.txtSoLuong.getText().toString())-1;
+                                context.txtSoLuong.setText(""+context.soLuong);
                                 notifyDataSetChanged();
 //                                XoaLop(urlxoalop,lopHocArrayList.get(vitri).getId());
                                 context.XoaSinhVien(sinhVien.getMaSinhVien());

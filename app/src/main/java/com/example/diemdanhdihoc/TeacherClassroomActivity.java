@@ -114,8 +114,8 @@ public class TeacherClassroomActivity extends AppCompatActivity {
     private String tenLop;
     private String maLopHoc;
 //    private String hoTenGV;
-    private int soBuoi;
-    private int soLuong;
+    public int soBuoi;
+    public int soLuong;
 
     //
 
@@ -142,7 +142,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
         soBuoi = intent.getIntExtra("SoBuoi",0);
         maLopHoc = intent.getStringExtra("MaLop");
         // hien thi thong tin lop
-        txtTenLop.setText(tenLop+" - "+maLopHoc);
+        txtTenLop.setText(tenLop+" - ");
         txtSoBuoi.setText(""+soBuoi);
 
         diemDanhArrayList = new ArrayList<>();
@@ -252,12 +252,12 @@ public class TeacherClassroomActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if (response.trim().equals("true")) {
-                    Toast.makeText(TeacherClassroomActivity.this, "Them sinh vien " + username + " thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeacherClassroomActivity.this, "Thêm sinh viên " + username + " thành công", Toast.LENGTH_SHORT).show();
                     sinhVienArrayList.add(new SinhVien(username,hoTen));
                     arrayAdapter.notifyDataSetChanged();
 //                    GetSVLH(URL_GET_DSSV,  idLopHoc);
                 } else {
-                    Toast.makeText(TeacherClassroomActivity.this, "Them sinh vien " + username + "," +hoTen+","+idLop+" that bai", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeacherClassroomActivity.this, "Thêm sinh viên " + username +" thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
         },
@@ -370,7 +370,8 @@ public class TeacherClassroomActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if (response.trim().equals("true")) {
-                    txtSoBuoi.setText(""+(soBuoi+1));
+                    soBuoi+=1;
+                    txtSoBuoi.setText(""+soBuoi);
                     Toast.makeText(TeacherClassroomActivity.this, "Cập nhật buổi học thành công", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(TeacherClassroomActivity.this, "Cập nhật buổi học không thành công", Toast.LENGTH_SHORT).show();
@@ -445,7 +446,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                    Toast.makeText(TeacherClassroomActivity.this, "zxc"+diemDanhArrayList.size(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TeacherClassroomActivity.this, "zxc"+diemDanhArrayList.size(), Toast.LENGTH_SHORT).show();
                     loadingDialog.dismissDialog();
 //                    arrayAdapter.notifyDataSetChanged();
                 }
@@ -478,7 +479,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
         String fName = "data.xls";
 //        File sdCard = Environment.getDataDirectory();
         File sdCard = Environment.getExternalStorageDirectory();
-        Toast.makeText(this, ""+sdCard.canWrite(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+sdCard.canWrite(), Toast.LENGTH_SHORT).show();
         File directory = new File(sdCard.getAbsolutePath()+"/Điểm Danh Đi Học");
         directory.mkdirs();
         File file = new File(directory, fName);
@@ -578,7 +579,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                 String hoTen = edtHoTen.getText().toString();
                 if(maSV.isEmpty() || maSV.equals("") || hoTen.isEmpty() || hoTen.equals(""))
                 {
-                    Toast.makeText(TeacherClassroomActivity.this, "Khong duoc de trong ma sinh vien va ho ten", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeacherClassroomActivity.this, "Không được để trống mã sinh viên và họ tên", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -626,11 +627,11 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
         try {
             startActivityForResult(
-                    Intent.createChooser(intent, "Select a File to Upload"),
+                    Intent.createChooser(intent, "Chọn file excel"),
                     FILE_SELECT_CODE);
         } catch (android.content.ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
-            Toast.makeText(this, "Please install a File Manager.",
+            Toast.makeText(this, "Vui lòng chọn file.",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -649,7 +650,7 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                     Log.d("test", "File Name: " + fName);
                     String extension = fName.substring(fName.lastIndexOf("."));
 //                    if(extensionz
-                    Toast.makeText(this, "Ban da chon file: "+extension, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bạn đã chọn file: "+extension, Toast.LENGTH_SHORT).show();
                     Log.d("Chon file",""+extension);
                     Log.d("de xem ",""+LoginAct.checkUser);
 
@@ -657,45 +658,16 @@ public class TeacherClassroomActivity extends AppCompatActivity {
                     {
                         try {
                             readAccountDataa();
-                            Log.d("af","hello minaa");
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
-                            Log.d("cawq","clgt");
                         }
                     }
                     else
                     {
                         Toast.makeText(this, "Bạn cần chọn file có định dạng .xls", Toast.LENGTH_SHORT).show();
                     }
-
-//                    try {
-//                        readAccountData();
-//                        Log.d("af","hello minaa");
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                        Log.d("cawq","clgt");
-//                    }
-//                    ("test", "File Path: " + file);
-                    // Get the file instance
-                    // File file = new File(path);
-                    // Initiate the upload
                 }
                 break;
-//            case FILE_SELECT_CODE:
-//                if (resultCode == RESULT_OK) {
-//                    // Get the Uri of the selected file
-//                    Uri uri = data.getData();
-//                    Log.d("test", "File Uri: " + uri.toString());
-//                    // Get the path
-////                    File file = new File(uri.getPath());
-//                    path = uri.getPath();
-//                    Toast.makeText(this, "File Path "+path, Toast.LENGTH_SHORT).show();
-////                    ("test", "File Path: " + file);
-//                    // Get the file instance
-//                    // File file = new File(path);
-//                    // Initiate the upload
-//                }
-//                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -703,16 +675,12 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
 
     private void readAccountDataa() throws FileNotFoundException {
-//        InputStream is = getResources().openRawResource(R.raw.test);
-//        FileInputStream is = openFileInput("file:///storage/emulated/0/newfolder/data.xls");
-        Log.d("aaa","hello mina");
         FileInputStream p_file = new FileInputStream(new File(path));
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(p_file));
         try {
             WorkbookSettings ws = new WorkbookSettings();
             ws.setEncoding("Cp1252");
             Workbook m_workBook = Workbook.getWorkbook(p_file,ws);
-            //p_sheetNo is excel sheet no which u want to read
+
             Sheet sheet = m_workBook.getSheet(0);
 
             if(sheet.getColumns()!=2 && sheet.getCell(0,0).getContents().equals("Mã sinh viên")
@@ -727,8 +695,11 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
                 for (int j = 1; j < sheet.getRows(); j++) {
                     final User user = new User();
-                    String msv = sheet.getCell(0, j).getContents();
-                    String hoTen = sheet.getCell(1, j).getContents();
+                    final String msv = sheet.getCell(0, j).getContents();
+                    final String hoTen = sheet.getCell(1, j).getContents();
+
+                    if(msv.equals("") || hoTen.equals(""))
+                        continue;
 
                     Log.d("maa sv",""+msv+","+hoTen);
 
@@ -755,39 +726,37 @@ public class TeacherClassroomActivity extends AppCompatActivity {
 
                     Log.d("Test", "Da tao: " + user.toString());
 
-//                    RequestQueue requestQueue = Volley.newRequestQueue(this);
-//                    Log.d("b", "cac");
-//                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD_SV, new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.d("b", "cacd");
-//                            if (response.trim().equals("true")) {
-////                    Toast.makeText(LoginAct.this, "Thanh cong", Toast.LENGTH_SHORT).show();
-//                                Log.d("b", "thanh cong");
-//                            } else {
-////                    Toast.makeText(LoginAct.this, "That bai", Toast.LENGTH_SHORT).show();
-//                                Log.d("b", "that bai");
-//                            }
-//                        }
-//                    },
-//                            new Response.ErrorListener() {
-//                                @Override
-//                                public void onErrorResponse(VolleyError error) {
-//                                    Log.d("A", "Loi: " + error.toString());
-//                                }
-//                            }
-//                    ) {
-//                        @Override
-//                        protected Map<String, String> getParams() throws AuthFailureError {
-//                            Map<String, String> params = new HashMap<>();
-//                            params.put("username", user.getUserName());
-//                            params.put("hoten", user.getHoTen());
-//                            params.put("idlophoc", String.valueOf(idLopHoc));
-//
-//                            return params;
-//                        }
-//                    };
-//                    requestQueue.add(stringRequest);
+                    RequestQueue requestQueue = Volley.newRequestQueue(this);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD_SV, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("true")) {
+//                    Toast.makeText(TeacherClassroomActivity.this, "Thanh cong", Toast.LENGTH_SHORT).show();
+                                Log.d("b", "thanh cong "+msv);
+                            } else {
+//                    Toast.makeText(LoginAct.this, "That bai", Toast.LENGTH_SHORT).show();
+                                Log.d("b", "that bai "+msv);
+                            }
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.d("A", "Loi: " + error.toString());
+                                }
+                            }
+                    ) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("username", msv);
+                            params.put("hoten", hoTen);
+                            params.put("idlophoc", String.valueOf(idLopHoc));
+
+                            return params;
+                        }
+                    };
+                    requestQueue.add(stringRequest);
 
                 }
                 GetSVLH(URL_GET_DSSV, idLopHoc);
@@ -800,62 +769,12 @@ public class TeacherClassroomActivity extends AppCompatActivity {
     }
 
 
-    private void onReadClick() throws IOException {
-        Log.d("Ghi","reading XLSX file from resources");
-//        FileInputStream is = new FileInputStream(new File(path));getResources().openRawResource(R.raw.testz);
-        InputStream p_file = getResources().openRawResource(R.raw.book1);
-        try
-        {
-            WorkbookSettings ws = new WorkbookSettings();
-            ws.setEncoding("Cp1252");
-            Workbook m_workBook = Workbook.getWorkbook(p_file,ws);
-            //p_sheetNo is excel sheet no which u want to read
-            Sheet sheet = m_workBook.getSheet(0);
-
-            for (int j = 1; j < sheet.getRows(); j++)
-            {
-                for(int k=0 ;k<sheet.getColumns();k++)
-                {
-                    Cell column1_cell = sheet.getCell(k, j);
-                    Log.d("Doc file "+j,"" + column1_cell.getContents());
-                    if(column1_cell.getContents().equals("can1"))
-                        Log.d("Hi","Mạnh Cần");
-                    if(column1_cell.getContents().equals("Mạnh Cần"))
-                        Log.d("Hi","gosu");
-                    if(column1_cell.getContents().equals(""))
-                        Log.d("Hi","zzz");
-                    if(column1_cell.getContents().equals(" "))
-                        Log.d("Hi","rong");
-                    if(column1_cell.getContents().isEmpty())
-                        Log.d("Hi","rong vvl");
-                }
-//                continue;
-            }
-        }
-        catch (BiffException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
         {
-//            case R.id.teacher_classroom_dssv:
-//                try {
-//                    onReadClick();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-////                dialogDSSV();
-//                Toast.makeText(this, ""+diemDanhArrayList.size()+", "+soLuong+", "+soBuoi, Toast.LENGTH_SHORT).show();
-//                break;
             case R.id.teacher_classroom_addsv:
                 dialogAddSV();
                 break;
