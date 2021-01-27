@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th1 21, 2021 lúc 10:55 AM
+-- Thời gian đã tạo: Th1 27, 2021 lúc 03:50 AM
 -- Phiên bản máy phục vụ: 10.3.16-MariaDB
 -- Phiên bản PHP: 7.3.23
 
@@ -44,14 +44,18 @@ INSERT INTO `BuoiHoc` (`idbuoihoc`, `idlophoc`, `sobuoi`, `madiemdanh`, `hethan`
 (1, 6, 1, 'f3tLt5', 1),
 (8, 6, 2, 'f3tLt4', 1),
 (9, 6, 3, 'f3t4t5', 1),
-(10, 7, 1, '412d3', 0),
-(15, 6, 4, 'f3tLt5', 0);
+(10, 7, 1, '412d3', 1),
+(15, 6, 4, 'f3tLt5', 1),
+(21, 7, 2, '4758b1', 0),
+(22, 6, 5, '4e758d', 1),
+(23, 6, 6, '98a93b', 0);
 
 --
 -- Bẫy `BuoiHoc`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_BuoiHoc_BuoiHocMoi` BEFORE INSERT ON `BuoiHoc` FOR EACH ROW BEGIN
+	set new.madiemdanh = (SELECT SUBSTR(CONCAT(MD5(RAND()),MD5(RAND())),1,6));
 	set new.sobuoi=(select COUNT(*) from `BuoiHoc` where idlophoc=new.idlophoc)+1;
 END
 $$
@@ -114,7 +118,10 @@ INSERT INTO `SVDD` (`idsvdd`, `idbuoihoc`, `username`) VALUES
 (6, 9, 'da'),
 (7, 9, 'manhcan'),
 (8, 9, 'g'),
-(9, 9, 'f');
+(9, 9, 'f'),
+(10, 15, 'da'),
+(11, 22, 'can1zx'),
+(12, 22, 'da');
 
 -- --------------------------------------------------------
 
@@ -138,13 +145,17 @@ INSERT INTO `SVLH` (`idsvlh`, `idlophoc`, `username`) VALUES
 (5, 6, 'f'),
 (6, 6, 'g'),
 (9, 6, 'hiimgosu'),
-(10, 6, 'can'),
 (12, 6, 'daa'),
 (13, 6, 'czz'),
 (14, 6, 'canda'),
 (15, 6, 'can1zx'),
 (18, 7, 'da'),
-(20, 7, '');
+(20, 7, ''),
+(28, 6, 'can1'),
+(32, 6, 'a'),
+(33, 6, 'c'),
+(34, 6, 'cancc'),
+(35, 6, 'can');
 
 -- --------------------------------------------------------
 
@@ -180,6 +191,7 @@ INSERT INTO `TaiKhoan` (`username`, `password`, `usertype`, `hoten`) VALUES
 ('can2', 'can2', 0, ''),
 ('can3', 'can3', 0, ''),
 ('can4', '', 0, ''),
+('cancc', 'cancc', 0, 'Tồ Tẽt'),
 ('canda', 'canca', 0, 'canda'),
 ('cann', 'cann', 0, ''),
 ('czz', '', 0, 'czz'),
@@ -259,7 +271,7 @@ ALTER TABLE `TaiKhoan`
 -- AUTO_INCREMENT cho bảng `BuoiHoc`
 --
 ALTER TABLE `BuoiHoc`
-  MODIFY `idbuoihoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idbuoihoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `LopHoc`
@@ -271,13 +283,13 @@ ALTER TABLE `LopHoc`
 -- AUTO_INCREMENT cho bảng `SVDD`
 --
 ALTER TABLE `SVDD`
-  MODIFY `idsvdd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idsvdd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `SVLH`
 --
 ALTER TABLE `SVLH`
-  MODIFY `idsvlh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idsvlh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
