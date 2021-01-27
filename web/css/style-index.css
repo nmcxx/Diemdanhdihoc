@@ -1,0 +1,148 @@
+body{
+	font-family: Times New Roman;
+	font-size: 13px;
+	width: 1349px;
+	margin: 0px auto;
+}
+#menu_top{
+	background: #0066CC;
+	height: 40px;
+}
+#banner{
+	background: red;
+	height: 200px;
+	width: 1349px;
+	margin-bottom: 10px;
+}
+#main #left {
+	width: 300px;
+	float: left;
+	min-height: 500px;
+}
+
+#main #right{
+	background: white;
+	width: 1049px;
+	float: left;
+	min-height: 500px;
+}
+
+#footer{
+	background: #FAFAFA;
+	width: 1349px;
+	height: 50px;
+	text-align: center;
+	clear: left;
+	line-height: 50px;
+}
+
+#menu_top ul{
+	margin:0px;
+	padding:0px;
+}
+#menu_top ul li{
+	list-style: none; /* bo dau dau` dong */
+	float:left;
+	position: relative;
+}
+#menu_top ul li a{
+	text-decoration: none; /* bo gach chan*/
+	display:block;
+	height: 40px; 
+	line-height: 40px;
+	color: #FFF;
+	padding: 0px 20px 0px 20px;
+/*	border-right: 1px solid #ccc;*/ /* mau` ngan cach */
+}
+#menu_top ul li a:hover{
+	color:#ccc;
+	/*background: #1949b5;*/ 
+}
+
+#menu_top ul li .submenu{ /* chọn submenu đầu tiên */
+	display: none;
+	position: absolute;
+}
+
+#menu_top ul li:hover .submenu{
+	display: block;
+	background: #0066cc;
+}
+#menu_top ul #username{
+	width: 100px;
+}
+
+/*#menu_top ul li a.active{
+	background: #1949b5;
+}*/
+
+#main #right #ontap
+{
+	font-size: 18px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+#main #right ul{
+	margin:0px;
+	padding: 0px;
+	margin-left:10px;
+}
+
+#main #right ul li{
+	list-style: none;
+	clear:left;
+	border-bottom: 2px solid #ccc;
+	float:left;
+	margin-bottom: 20px;
+}
+
+#main #right ul li img{
+	float:left; 
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#main #right ul li h2{
+	margin-top: 0px;
+}
+
+#main #left  .menu_left ul{
+	margin: 0px;
+	padding: 0px;
+	margin-left: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+#main #left  .menu_left ul li{
+	list-style: none;
+}
+
+#main #left .menu_left ul li a{
+	display: block;
+	text-decoration: none;
+	line-height: 30px;
+	color: black;
+	text-indent: 30px;
+	font-size: 15px;
+}
+
+#main #left .menu_left ul li a:hover{
+	color: #ccc;
+}
+
+#main #left  .menu_left h3{
+	background: #194d58;/* url(../icons/icon_menu.png) no-repeat 4px;*/
+	height: 40px;
+	margin-top:0px;
+	line-height: 40px;
+	/*text-indent: 35px;*/
+	text-align: center;
+	color: white;
+	margin-left: 10px;
+}
+
+#banner img{
+	width: 1349px;
+	height: 200px;
+}

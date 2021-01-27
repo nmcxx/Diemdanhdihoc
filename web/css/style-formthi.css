@@ -1,0 +1,16 @@
+body{
+	font-family: Times New Roman;
+	font-size: 17px;
+	width: 800px;
+	margin: 0px auto;
+}
+#header{
+	text-align: center;
+	height: 50px;
+	border: 1px solid #ccc;
+	margin-top:1px;
+}
+#main{
+	margin-top:1px;
+	border: 1px solid #ccc;
+}
